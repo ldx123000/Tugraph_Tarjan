@@ -81,11 +81,11 @@ int main(int argc, char **argv) {
     // output
     start_time = get_time();
     // TODO(any): write to file
-    for (size_t i = 0; i < graph.NumVertices(); i++) {
+    for (size_t i = 0; i < graph.NumVertices(); i++) {   //统计各个强连通分量所含点的个数
         printf("node:%ld  color:%ld\n", i, pack.color[i]);
         pack.cnt[pack.color[i]]++;
     }
-    for (size_t i = 1; i <= pack.para_datas[SUM]; i++) {
+    for (size_t i = 1; i <= pack.para_datas[SUM]; i++) {    //打印各个强连通分量的信息，包括
         printf("strongly connected components index:%ld   number of nodes:%ld nodes:", i,
                pack.cnt[i]);
         for (size_t j = 0; j < pack.cnt[i]; j++) printf("%ld ", pack.map[i][j]);
