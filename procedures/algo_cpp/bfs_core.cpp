@@ -12,8 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
 
-#include "lgraph/olap_base.h"
 #include "./algo.h"
+#include "lgraph/olap_base.h"
 
 using namespace lgraph_api;
 using namespace lgraph_api::olap;
@@ -21,6 +21,7 @@ using namespace lgraph_api::olap;
 size_t BFSCore(OlapBase<Empty>& graph, size_t root_vid, ParallelVector<size_t>& parent) {
     size_t root = root_vid;
     auto active_in = graph.AllocVertexSubset();
+    printf("size:%ld\n", active_in.Size());
     active_in.Add(root);
     auto active_out = graph.AllocVertexSubset();
     parent.Fill((size_t)-1);

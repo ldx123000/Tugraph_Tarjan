@@ -15,6 +15,7 @@
 #pragma once
 
 #include <unordered_set>
+
 #include "lgraph/olap_base.h"
 
 using namespace lgraph_api;
@@ -260,7 +261,8 @@ size_t KTrussCore(OlapBase<Empty>& graph, size_t value_k,
  * @param[in]        graph              The graph to compute on.
  * @param[in,out]    label              The ParallelVector to store label information.
  * @param[in]        active_threshold   Threshold of active_vertices in original graph.
- * @param[in]        is_sync            if to run louvain in sync mode. 0 means async mode, non-zero value means sync mode.
+ * @param[in]        is_sync            if to run louvain in sync mode. 0 means async mode, non-zero
+ * value means sync mode.
  *
  * @return   return the modularity of graph.
  */
@@ -386,3 +388,32 @@ double WLPACore(OlapBase<double>& graph, int num_iterations);
  *
  */
 void WPageRankCore(OlapBase<double>& graph, int num_iterations, ParallelVector<double>& curr);
+
+#include <cstdio>
+#include <iostream>
+#include <vector>
+using namespace std;
+class tar_pack {
+#define PARA_DATAS_SIZE ((size_t)3)
+#define DEEP 0
+#define TOP 1
+#define SUM 2
+ public:
+    ParallelVector<size_t>&flag, &low, &dfn, &a, &color, &cnt;
+    ParallelVector<size_t> para_datas;
+    vector<vector<size_t>> map;
+    tar_pack(ParallelVector<size_t>& f, ParallelVector<size_t>& l, ParallelVector<size_t>& d,
+             ParallelVector<size_t>& a, ParallelVector<size_t>& c, ParallelVector<size_t>& cn,
+             size_t num_vertex)
+        : flag(f),
+          low(l),
+          dfn(d),
+          a(a),
+          color(c),
+          cnt(cn),
+          para_datas(PARA_DATAS_SIZE, PARA_DATAS_SIZE) {
+        map = vector<vector<size_t>>(num_vertex, vector<size_t>(0, 0));
+    };
+};
+
+void TARJANCore(OlapBase<Empty>& graph, size_t u, tar_pack& pack);
