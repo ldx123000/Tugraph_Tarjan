@@ -46,7 +46,7 @@ TuGraph的文档在[链接](https://tugraph-db.readthedocs.io/zh_CN/latest)，�
 示例：`tugraph/tugraph-compile-centos7`Docker环境
 
 ```bash
-$ git clone --recursive https://github.com/TuGraph-family/tugraph-db.git
+$ git clone --recursive https://github.com/ldx123000/Tugraph_Tarjan.git
 $ cd tugraph-db
 $ deps/build_deps.sh
 $ mkdir build && cd build
