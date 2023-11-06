@@ -51,7 +51,7 @@ Example:
 `tugraph/tugraph-compile-centos7`Docker environment
 
 ```bash
-$ git clone --recursive https://github.com/TuGraph-family/tugraph-db.git
+$ git clone --recursive https://github.com/ldx123000/Tugraph_Tarjan.git
 $ cd tugraph-db
 $ deps/build_deps.sh
 $ mkdir build && cd build
