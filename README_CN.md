@@ -50,7 +50,7 @@ $ git clone --recursive https://github.com/ldx123000/Tugraph_Tarjan.git
 $ cd tugraph-db
 $ deps/build_deps.sh
 $ mkdir build && cd build
-$ cmake .. -DOURSYSTEM=centos -DENABLE_PREDOWNLOAD_DEPENDS_PACKAGE=1
+$ cmake .. -DOURSYSTEM=ubuntu -DENABLE_PREDOWNLOAD_DEPENDS_PACKAGE=1
 $ make
 $ make package
 ```
